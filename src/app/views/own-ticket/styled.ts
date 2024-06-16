@@ -1,11 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const OwnTicketWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  justify-content: center;
-  flex-grow: 1;
+	justify-content: center;
+	flex-grow: 1;
 `;
 
 export const ContentContainer = styled.div`
@@ -18,7 +19,7 @@ export const ContentContainer = styled.div`
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	width: 300px;
 	color: black;
-  box-sizing: border-box;
+	box-sizing: border-box;
 `;
 export const QRCodeContainer = styled.div`
 	margin: 20px 0;
@@ -54,49 +55,54 @@ export const Status = styled.div`
 `;
 
 export const ButtonsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 300px;
-  margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	width: 300px;
+	margin-top: 10px;
+`;
+
+const buttonStyle = css`
+	/* Обнуление стандартных стилей кнопки */
+	background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+
+	/* Кастомные стили */
+	display: inline-block;
+	padding: 12px 24px;
+	background-color: #e74c3c;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 30px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s;
+	width: 145px;
+
+	&:hover {
+		background-color: #c0392b;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&:active {
+		background-color: #a93226;
+	}
 `;
 
 export const StyledButton = styled.button`
-  /* Обнуление стандартных стилей кнопки */
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  text-decoration: none;
-
-  /* Кастомные стили */
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #e74c3c;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s;
-  width: 145px;
-
-  &:hover {
-    background-color: #c0392b;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:active {
-    background-color: #a93226;
-  }
+	${buttonStyle}
 `;
 
-export const BigButton = styled(StyledButton)`
-  box-sizing: border-box;
-  width: 300px;
-  margin-top: 10px;
+export const BigButton = styled(Link)`
+	${buttonStyle}
+	box-sizing: border-box;
+	width: 300px;
+	margin-top: 10px;
 `;

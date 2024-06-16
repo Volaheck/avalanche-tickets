@@ -7,8 +7,9 @@ import { BuyTicket } from "./views/buy-ticket";
 import { OwnList } from "./views/own-list";
 import { OwnTicket } from "./views/own-ticket";
 import { Home } from "./views/home";
+import { Camera } from "./views/camera";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -31,21 +32,22 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export const App = () => {
-  return (
-    <Router>
-      <GlobalStyles />
-      <Routes>
-        <Route path="/" element={<Home />} />
+	return (
+		<Router>
+			<GlobalStyles />
+			<Routes>
+				<Route path="/" element={<Home />} />
 				<Route path="/home" element={<Home />} />
-        <Route path="/list" element={<OwnList />} />
-        <Route path="/ticket/:id" element={<OwnTicket />} />
-        <Route path="/buy" element={<BuyList />} />
-        <Route path="/buy/:id" element={<BuyTicket />} />
-      </Routes>
-      <Navigation />
-      <ToastContainer />
-    </Router>
-  );
+				<Route path="/list" element={<OwnList />} />
+				<Route path="/ticket/:id" element={<OwnTicket />} />
+				<Route path="/buy" element={<BuyList />} />
+				<Route path="/buy/:id" element={<BuyTicket />} />
+				<Route path="/camera" element={<Camera />} />
+			</Routes>
+			<Navigation />
+			<ToastContainer />
+		</Router>
+	);
 };
 /*
 Реализуемость

@@ -81,7 +81,7 @@ export const OwnTicket = () => {
         <StyledButton>Send</StyledButton>
         <StyledButton>Sell</StyledButton>
       </ButtonsContainer>
-			<BigButton>Validate</BigButton>
+			<BigButton to ="/camera">Validate</BigButton>
     </OwnTicketWrapper>
   );
 };

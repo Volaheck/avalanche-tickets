@@ -1,22 +1,40 @@
-import { ListWrapper } from "./styled";
-import { Link } from "react-router-dom";
+import { Tickets } from "./tickets";
+import { OwnWrapper, Groups, Group, GroupName } from "./styled";
+import { useGetByList } from "../../../hooks/use-get-by-list";
+
+export interface ITicket {
+  id: number;
+  service: string;
+  zone: string;
+  time: string;
+  description?: string | null;
+  price: string;
+}
+
+export interface IGroup {
+  id: number;
+  name: string;
+  tickets: ITicket[];
+}
 
 export const OwnList = () => {
+  const groups = useGetByList<IGroup>("ticket-groups");
+
   return (
-    <ListWrapper>
-      <h1>My tickets</h1>
-      <ul>
-        {Array(10)
-          .fill(0)
-          .map((_, index) => {
+    <OwnWrapper>
+      {groups.isLoading && <div>Loading...</div>}
+      {!groups.isLoading && (
+        <Groups>
+          {groups.data.map((group) => {
             return (
-              <Link key={index + ""} to={`/ticket/${index}`}>
-                <li>Ticket {index}</li>
-              </Link>
+              <Group key={group.id}>
+                <GroupName>{group.name}</GroupName>
+                <Tickets tickets={group.tickets} groupId={group.id} />
+              </Group>
             );
           })}
-      </ul>
-      <Link to="/buy">Buy new ticket</Link>
-    </ListWrapper>
+        </Groups>
+      )}
+    </OwnWrapper>
   );
 };

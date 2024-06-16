@@ -11,6 +11,13 @@ import {
   Description,
   Price,
 } from "./styled";
+import { usePost } from "../../../hooks/use-post/usePost";
+import { TicketData } from "../own-ticket";
+
+interface TicketCreateData {
+  ticketTypeId: number;
+  address: string;
+}
 
 function convertPrice(price: string) {
   const lastTwoDigits = price.slice(-2);
@@ -20,31 +27,46 @@ function convertPrice(price: string) {
 
 export const BuyTicket = () => {
   const { id } = useParams();
-  const { isLoading, data: ticket } = useGetById<ITicket>(
+  const { isLoading, data: ticketType } = useGetById<ITicket>(
     "tickets/types",
     id as string,
   );
+  const [postTicket, ticketData] = usePost<TicketData, TicketCreateData>(
+    "tickets",
+  );
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
-  if (!ticket) {
+  if (!ticketType) {
     return <h1>Ticket not found</h1>;
   }
 
-  const isLongTerms = ticket.time.length > 2;
+  const isLongTerms = ticketType.time.length > 2;
   const timeSize = isLongTerms ? 30 : 70;
   return (
     <BuyTicketWrapper>
-      <Ticket key={ticket.id}>
-        <Service>{ticket.service}</Service>
-        <Zone>{ticket.zone}</Zone>
-        <Time size={timeSize}>{ticket.time}</Time>
-        <Description>{ticket.description}</Description>
+      <Ticket key={ticketType.id}>
+        <Service>{ticketType.service}</Service>
+        <Zone>{ticketType.zone}</Zone>
+        <Time size={timeSize}>{ticketType.time}</Time>
+        <Description>{ticketType.description}</Description>
         <Price>
-          {convertPrice(ticket.price)} <span>PLN</span>
+          {convertPrice(ticketType.price)} <span>PLN</span>
         </Price>
       </Ticket>
-      <StyledButton>Buy ticket</StyledButton>
+      <StyledButton
+        onClick={() => {
+          if (!ticketData.isLoading) {
+            postTicket({
+              address: "0xCf7fcf8455615B65eCa3fcAe200cd814Fb3fa1c1",
+              ticketTypeId: ticketType.id,
+            });
+          }
+        }}
+      >
+        Buy ticket
+      </StyledButton>
     </BuyTicketWrapper>
   );
 };

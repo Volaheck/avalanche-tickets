@@ -15,7 +15,7 @@ import {
 } from "./styled";
 import { useGetById } from "../../../hooks/use-get-by-id";
 
-interface TicketData {
+export interface TicketData {
   id: number;
   validatedAt: string | null;
   status: string;

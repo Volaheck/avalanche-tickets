@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ITicket } from "../index";
 import {
 	TicketsWrapper,
@@ -15,22 +16,31 @@ function convertPrice(price: string) {
 	return restOfString + "." + lastTwoDigits;
 }
 
-export const Tickets = ({ tickets, groupId }: { tickets: ITicket[], groupId: number }) => {
-	let timeSize = 70;
-	if(groupId === 1) timeSize = 30;
+export const Tickets = ({
+	tickets,
+	groupId,
+}: {
+	tickets: ITicket[];
+	groupId: number;
+}) => {
+
 	return (
 		<TicketsWrapper>
 			{tickets.map((ticket) => {
+				const isLongTerms = ticket.time.length > 2;
+				const timeSize = isLongTerms ? 30 : 70;
 				return (
-					<Ticket key={ticket.id}>
-						<Service>{ticket.service}</Service>
-						<Zone>{ticket.zone}</Zone>
-						<Time size={ticket.id === 9 ? 37 : timeSize}>{ticket.time}</Time>
-						<Description>{ticket.description}</Description>
-						<Price>
-							{convertPrice(ticket.price)} <span>PLN</span>
-						</Price>
-					</Ticket>
+					<Link to={`/buy/${ticket.id}`}>
+						<Ticket key={ticket.id}>
+							<Service>{ticket.service}</Service>
+							<Zone>{ticket.zone}</Zone>
+							<Time size={timeSize}>{ticket.time}</Time>
+							<Description>{ticket.description}</Description>
+							<Price>
+								{convertPrice(ticket.price)} <span>PLN</span>
+							</Price>
+						</Ticket>
+					</Link>
 				);
 			})}
 		</TicketsWrapper>

@@ -1,9 +1,11 @@
 import { Routes } from "react-router";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import { Navigation } from "./components/navigation";
 import { BuyList } from "./views/buy-list";
+import { BuyTicket } from "./views/buy-ticket";
 import { OwnList } from "./views/own-list";
-import { Ticket } from "./views/ticket";
+import { OwnTicket } from "./views/own-ticket";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -11,22 +13,27 @@ const GlobalStyles = createGlobalStyle`
     display: flex;
     align-items: center;
     background: linear-gradient(to bottom right, #000000, #440000);
+		color: white;
     font-family: 'Arial', sans-serif;
+		padding-bottom: 42px;
   }
+	* {
+		text-decoration: none;
+	}
 `;
 
 export const App = () => {
 	return (
-		<>
-			<Router>
-				<GlobalStyles />
-				<Routes>
-					<Route path="/" element={<OwnList />} />
-					<Route path="/ticket/:id" element={<Ticket />} />
-					<Route path="/buy" element={<BuyList />} />
-				</Routes>
-			</Router>
-		</>
+		<Router>
+			<GlobalStyles />
+			<Routes>
+				<Route path="/" element={<OwnList />} />
+				<Route path="/ticket/:id" element={<OwnTicket />} />
+				<Route path="/buy" element={<BuyList />} />
+				<Route path="/buy/:id" element={<BuyTicket />} />
+			</Routes>
+			<Navigation />
+		</Router>
 	);
 };
 /*

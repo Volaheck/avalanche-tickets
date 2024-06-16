@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { TicketWrapper } from "./styled";
 
-export const Ticket = () => {
+export const OwnTicket = () => {
   const { id } = useParams();
 	return (
 		<TicketWrapper>

@@ -10,13 +10,18 @@ import { OwnTicket } from "./views/own-ticket";
 const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
-    display: flex;
-    align-items: center;
+  }
+	#root{
+		display: flex;
+		flex-direction: column;
     background: linear-gradient(to bottom right, #000000, #440000);
 		color: white;
     font-family: 'Arial', sans-serif;
 		padding-bottom: 42px;
-  }
+		overflow-x: hidden;
+		box-sizing: border-box;
+		min-height: 100vh;
+	}
 	* {
 		text-decoration: none;
 	}
@@ -28,6 +33,7 @@ export const App = () => {
 			<GlobalStyles />
 			<Routes>
 				<Route path="/" element={<OwnList />} />
+				<Route path="/list" element={<OwnList />} />
 				<Route path="/ticket/:id" element={<OwnTicket />} />
 				<Route path="/buy" element={<BuyList />} />
 				<Route path="/buy/:id" element={<BuyTicket />} />

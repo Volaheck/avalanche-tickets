@@ -7,6 +7,7 @@ export const NavgationWrapper = styled.nav`
   z-index: 1;
   position: fixed;
   bottom: 0;
+  left:0;
   width: 100%;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.5);

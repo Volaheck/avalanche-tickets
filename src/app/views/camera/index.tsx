@@ -34,10 +34,11 @@ export const Camera = () => {
 	};
 
 	useEffect(() => {
-		openCamera();
+		!isCameraOpen && openCamera();
 		return () => {
 			closeCamera();
 		};
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

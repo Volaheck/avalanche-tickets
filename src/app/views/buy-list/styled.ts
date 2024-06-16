@@ -4,6 +4,7 @@ export const BuyWrapper = styled.div``;
 
 export const GroupName = styled.h2`
   color: white;
+  padding-left: 20px;
 `;
 
 export const Groups = styled.ul`

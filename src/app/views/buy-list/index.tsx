@@ -20,7 +20,6 @@ export interface IGroup {
 export const BuyList = () => {
 	return (
 		<BuyWrapper>
-			<h1>Buy new ticket</h1>
 			<Groups>
 				{groups.data.map((group) => {
 					return (
@@ -31,7 +30,6 @@ export const BuyList = () => {
 					);
 				})}
 			</Groups>
-			<button>Buy</button>
 		</BuyWrapper>
 	);
 };

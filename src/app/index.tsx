@@ -9,7 +9,6 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
     background: linear-gradient(to bottom right, #000000, #440000);
     font-family: 'Arial', sans-serif;
@@ -18,14 +17,16 @@ const GlobalStyles = createGlobalStyle`
 
 export const App = () => {
 	return (
-		<Router>
-			<GlobalStyles />
-			<Routes>
-				<Route path="/" element={<OwnList />} />
-				<Route path="/ticket/:id" element={<Ticket />} />
-				<Route path="/buy" element={<BuyList />} />
-			</Routes>
-		</Router>
+		<>
+			<Router>
+				<GlobalStyles />
+				<Routes>
+					<Route path="/" element={<OwnList />} />
+					<Route path="/ticket/:id" element={<Ticket />} />
+					<Route path="/buy" element={<BuyList />} />
+				</Routes>
+			</Router>
+		</>
 	);
 };
 /*

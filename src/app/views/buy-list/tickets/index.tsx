@@ -10,11 +10,8 @@ import {
 } from "./styled";
 
 function convertPrice(price: string) {
-	// Отделяем последние две цифры
 	const lastTwoDigits = price.slice(-2);
-	// Отделяем остальные цифры
 	const restOfString = price.slice(0, -2);
-	// Соединяем части строки с точкой посередине
 	return restOfString + "." + lastTwoDigits;
 }
 

@@ -57,6 +57,7 @@ export const groups: Data<IGroup> = {
 					service: "ZTM Warszawa",
 					zone: "Zone: 1+2",
 					time: "Weekend",
+					description: "zone 1+2",
 					price: "1200",
 					id: 5,
 				},

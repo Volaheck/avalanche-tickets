@@ -3,11 +3,19 @@ import styled from "styled-components";
 export const TicketsWrapper = styled.ul`
 	display: flex;
 	gap: 20px;
-	padding: 0;
+	padding: 0 10px;
+	max-width: 100vw;
+	overflow-x: scroll;
+	box-sizing: border-box;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;
 
 export const Ticket = styled.li`
 	display: flex;
+	flex-shrink: 0;
 	flex-direction: column;
 	gap: 5px;
 	width: 150px;

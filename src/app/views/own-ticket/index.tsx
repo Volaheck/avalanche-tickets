@@ -79,7 +79,7 @@ export const OwnTicket = () => {
       </ContentContainer>
       <ButtonsContainer>
         <StyledButton>Send</StyledButton>
-        <StyledButton>Sell</StyledButton>
+        <StyledButton as = "a" href="https://joepegs.com/collections" target="_blank" >Sell</StyledButton>
       </ButtonsContainer>
 			<BigButton to ="/camera">Validate</BigButton>
     </OwnTicketWrapper>

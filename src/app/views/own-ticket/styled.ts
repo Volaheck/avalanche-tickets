@@ -82,7 +82,9 @@ const buttonStyle = css`
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	transition: background-color 0.3s;
 	width: 145px;
-
+  display: block;
+  box-sizing: border-box;
+  
 	&:hover {
 		background-color: #c0392b;
 	}

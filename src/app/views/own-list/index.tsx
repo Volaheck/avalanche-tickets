@@ -1,6 +1,6 @@
 import { Tickets } from "./tickets";
 import { OwnWrapper, Groups, Group, GroupName } from "./styled";
-import { useGetByList } from "../../../hooks/use-get-by-list";
+import { useGetOwnList } from "../../../hooks/use-get-own-list";
 
 export interface ITicket {
   id: number;
@@ -18,7 +18,7 @@ export interface IGroup {
 }
 
 export const OwnList = () => {
-  const groups = useGetByList<IGroup>("ticket-groups");
+  const groups = useGetOwnList<IGroup>("tickets");
 
   return (
     <OwnWrapper>

@@ -6,6 +6,7 @@ import { BuyList } from "./views/buy-list";
 import { BuyTicket } from "./views/buy-ticket";
 import { OwnList } from "./views/own-list";
 import { OwnTicket } from "./views/own-ticket";
+import { Home } from "./views/home";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,7 +35,8 @@ export const App = () => {
     <Router>
       <GlobalStyles />
       <Routes>
-        <Route path="/" element={<OwnList />} />
+        <Route path="/" element={<Home />} />
+				<Route path="/home" element={<Home />} />
         <Route path="/list" element={<OwnList />} />
         <Route path="/ticket/:id" element={<OwnTicket />} />
         <Route path="/buy" element={<BuyList />} />

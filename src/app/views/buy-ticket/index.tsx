@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetById } from "../../../hooks/use-get-by-id";
 import { ITicket } from "../buy-list";
 import {
@@ -13,6 +13,8 @@ import {
 } from "./styled";
 import { usePost } from "../../../hooks/use-post/usePost";
 import { TicketData } from "../own-ticket";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 interface TicketCreateData {
   ticketTypeId: number;
@@ -34,6 +36,13 @@ export const BuyTicket = () => {
   const [postTicket, ticketData] = usePost<TicketData, TicketCreateData>(
     "tickets",
   );
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (ticketData.data) {
+      navigate(`/ticket/${ticketData.data.id}`);
+      toast.success("Bilet kupiony!");
+    }
+  }, [navigate, ticketData]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;

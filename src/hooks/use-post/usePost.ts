@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 
 export function usePost<T, P>(
   resource: string,
@@ -21,7 +20,6 @@ export function usePost<T, P>(
     })
       .then((res) => res.json())
       .then((res) => {
-        toast.error("Insufficient funds");
         setState({
           data: res,
           isLoading: false,

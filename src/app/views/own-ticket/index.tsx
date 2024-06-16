@@ -11,6 +11,7 @@ import {
   InfoValue,
   ButtonsContainer,
   StyledButton,
+	BigButton,
 } from "./styled";
 import { useGetById } from "../../../hooks/use-get-by-id";
 
@@ -80,6 +81,7 @@ export const OwnTicket = () => {
         <StyledButton>Send</StyledButton>
         <StyledButton>Sell</StyledButton>
       </ButtonsContainer>
+			<BigButton>Validate</BigButton>
     </OwnTicketWrapper>
   );
 };

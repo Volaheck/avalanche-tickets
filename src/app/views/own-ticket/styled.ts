@@ -80,7 +80,7 @@ export const StyledButton = styled.button`
   border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s;
-  width: 120px;
+  width: 145px;
 
   &:hover {
     background-color: #c0392b;
@@ -93,4 +93,10 @@ export const StyledButton = styled.button`
   &:active {
     background-color: #a93226;
   }
+`;
+
+export const BigButton = styled(StyledButton)`
+  box-sizing: border-box;
+  width: 300px;
+  margin-top: 10px;
 `;

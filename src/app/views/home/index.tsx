@@ -8,7 +8,11 @@ export const Home = () => {
     <HomeWrapper>
       <img alt="AVAX" src={avaxLogoImg} width="70"></img>
       <h1>0.03 AVAX</h1>
-      {count.data && <h2>You own <b>{count.data.count}</b> tickets</h2>}
+      {count.data && (
+        <h2>
+          Tickets: <b>{count.data.count}</b>
+        </h2>
+      )}
     </HomeWrapper>
   );
 };

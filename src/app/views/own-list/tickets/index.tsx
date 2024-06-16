@@ -30,7 +30,7 @@ export const Tickets = ({
 				const isLongTerms = ticket.time.length > 2;
 				const timeSize = isLongTerms ? 30 : 70;
 				return (
-					<Link to={`/buy/${ticket.id}`}>
+					<Link to={`/ticket/${ticket.id}`}>
 						<Ticket key={ticket.id}>
 							<Service>{ticket.service}</Service>
 							<Zone>{ticket.zone}</Zone>

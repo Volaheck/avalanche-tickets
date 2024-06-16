@@ -10,15 +10,12 @@ import {
 	Price,
 } from "./styled";
 
-<<<<<<< Updated upstream
 function convertPrice(price: string) {
 	const lastTwoDigits = price.slice(-2);
 	const restOfString = price.slice(0, -2);
 	return restOfString + "." + lastTwoDigits;
 }
 
-=======
->>>>>>> Stashed changes
 export const BuyTicket = () => {
 	const isLongTerms = ticket.time.length > 2;
 	const timeSize = isLongTerms ? 30 : 70;

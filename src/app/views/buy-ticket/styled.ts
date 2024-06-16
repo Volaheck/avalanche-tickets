@@ -8,56 +8,47 @@ export const BuyTicketWrapper = styled.div`
   flex-grow: 1;
 `;
 
-export const ContentContainer = styled.div`
+export const Ticket = styled.li`
 	display: flex;
+	flex-shrink: 0;
 	flex-direction: column;
+	gap: 5px;
+	width: 150px;
+	height: 200px;
+	justify-content: space-between;
 	align-items: center;
-	padding: 20px;
 	background: linear-gradient(to bottom right, #3a1c71, #d76d77, #ffaf7b);
+	color: white;
+	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	width: 300px;
-	color: black;
-  box-sizing: border-box;
-`;
-export const QRCodeContainer = styled.div`
-	margin: 20px 0;
-	padding: 10px;
-	background-color: white;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	user-select: none;
+	cursor: pointer;
 `;
 
-export const InfoContainer = styled.div`
-	text-align: left;
-	width: 100%;
+export const Service = styled.span``;
+
+export const Zone = styled.span``;
+
+interface ITime {
+	size?: number;
+}
+export const Time = styled.span<ITime>`
+	font-size: ${(props) => props.size || 70}px;
+	font-weight: 500;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
-export const InfoRow = styled.div`
-	display: flex;
-	justify-content: space-between;
-	margin: 5px 0;
-`;
-
-export const InfoLabel = styled.div`
-	font-weight: bold;
-`;
-
-export const InfoValue = styled.div`
-	text-align: right;
-`;
-
-export const Status = styled.div`
-	font-weight: bold;
+export const Description = styled.span`
 	text-align: center;
-	margin-bottom: 10px;
 `;
 
-export const ButtonsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 300px;
-  margin-top: 10px;
+export const Price = styled.span`
+	font-weight: 600;
+	& span {
+		font-weight: 400;
+		font-size: 12px;
+	}
 `;
 
 export const StyledButton = styled.button`
@@ -80,7 +71,8 @@ export const StyledButton = styled.button`
   border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s;
-  width: 120px;
+  width: 190px;
+  margin-top: 10px;
 
   &:hover {
     background-color: #c0392b;
@@ -94,3 +86,4 @@ export const StyledButton = styled.button`
     background-color: #a93226;
   }
 `;
+

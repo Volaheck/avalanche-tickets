@@ -1,74 +1,36 @@
-import QRCode from "qrcode.react";
 import { ticket } from "./mock";
 import {
 	BuyTicketWrapper,
-	ContentContainer,
-	Status,
-	QRCodeContainer,
-	InfoContainer,
-	InfoRow,
-	InfoLabel,
-	InfoValue,
-	ButtonsContainer,
 	StyledButton,
+	Ticket,
+	Service,
+	Zone,
+	Time,
+	Description,
+	Price,
 } from "./styled";
-/*
-interface TicketProps {
-  ticket: {
-    id: number;
-    validatedAt: string | null;
-    status: string;
-    createdAt: string;
-    updatedAt: string;
-    ticketType: {
-      id: number;
-      name: string;
-      service: string;
-      zone: string;
-      time: string;
-      description: string;
-      price: number;
-      createdAt: string;
-      updatedAt: string;
-      ticketGroup: {
-        id: number;
-        name: string;
-        createdAt: string;
-        updatedAt: string;
-      };
-    };
-  };
+
+function convertPrice(price: string) {
+	const lastTwoDigits = price.slice(-2);
+	const restOfString = price.slice(0, -2);
+	return restOfString + "." + lastTwoDigits;
 }
 
-*/
-
 export const BuyTicket = () => {
+	const isLongTerms = ticket.time.length > 2;
+	const timeSize = isLongTerms ? 30 : 70;
 	return (
 		<BuyTicketWrapper>
-			<ContentContainer>
-				<Status>{ticket.status === "expired" ? "Nieważny" : "Ważny"}</Status>
-				<QRCodeContainer>
-					<QRCode value="M19210" size={150} />
-				</QRCodeContainer>
-				<InfoContainer>
-					<InfoRow>
-						<InfoLabel>Ważny od:</InfoLabel>
-						<InfoValue>{new Date(ticket.createdAt).toLocaleString()}</InfoValue>
-					</InfoRow>
-					<InfoRow>
-						<InfoLabel>Ważny do:</InfoLabel>
-						<InfoValue>{new Date(ticket.updatedAt).toLocaleString()}</InfoValue>
-					</InfoRow>
-					<InfoRow>
-						<InfoLabel>Kod kontroli:</InfoLabel>
-						<InfoValue>M19210</InfoValue>
-					</InfoRow>
-				</InfoContainer>
-			</ContentContainer>
-			<ButtonsContainer>
-				<StyledButton>Send</StyledButton>
-				<StyledButton>Sell</StyledButton>
-			</ButtonsContainer>
+			<Ticket key={ticket.id}>
+				<Service>{ticket.service}</Service>
+				<Zone>{ticket.zone}</Zone>
+				<Time size={timeSize}>{ticket.time}</Time>
+				<Description>{ticket.description}</Description>
+				<Price>
+					{convertPrice(ticket.price)} <span>PLN</span>
+				</Price>
+			</Ticket>
+			<StyledButton>Buy ticket</StyledButton>
 		</BuyTicketWrapper>
 	);
 };
